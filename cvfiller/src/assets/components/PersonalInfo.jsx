@@ -6,20 +6,32 @@ function PersonalInfo() {
     const [name, setName] = useState('');
     const [email, setEmail]= useState('');
     const [number, setNumber]= useState('');
+
+   const [isSubmited, setisSubmited]= useState(false);
     
     function submit(event){
         event.preventDefault();
-        alert(name)
+        // if(name!=''&& email!=''&& number!=''){
+        // alert(name)// pass data to component
+        
+        // }
+        setisSubmited(true);
+    }
+
+    function handleName(e){
+     setName(e.target.value)
+    
     }
 
     return(
         <>
         <h1>Personal Info</h1> 
+       { ! isSubmited ? (
         <form onSubmit={submit}>
           <label >Name</label>
           <input type="text"
           value={name} 
-          onChange={e=> setName(e.target.value)}/><br/>
+          onChange={handleName}/><br/>
           <label htmlFor="email">email</label> 
           <input type="email" id="email" 
           value={email}
@@ -29,8 +41,18 @@ function PersonalInfo() {
           <input type="tel" id="number" value={number}
            onChange={e=>setNumber(e.target.value)}/> <br/>
          <input type="submit"/>
+        </form> ) :
         
-        </form>
+        (
+         <div>
+        <ul>
+        <li><b>Name</b><p>{name}</p></li>
+        <li><p>Email</p><p>{email}</p></li>
+        <li><p>Number</p><p>{number}</p></li>
+        </ul>
+        <button>Edit</button>
+       </div>
+        ) }
         </>
     )
 }
