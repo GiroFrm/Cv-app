@@ -1,32 +1,29 @@
-import { useLayoutEffect, useState } from "react";
+import { useState } from "react";
 
+function Experience(){
 
-function Education() {
-   
-    const [school, setSchool]= useState('');
+    const[company, setCompany]= useState('');
     const [title, setTitle]=useState('');
     const[startDate, setStartDate] = useState('');
     const[endDate, setEndDate] = useState('');
 
    const [isSubmit, setIsSubmit]= useState(false);
-   
 
-    function submit(event){
-        event.preventDefault()
-        if(school!=''&& title!=''
-        &&startDate!=''&&endDate!=''){
-        setIsSubmit(!isSubmit)
-        }
+   function submit(event){
+    event.preventDefault()
+    if(company!=''&& title!=''
+    &&startDate!=''&&endDate!=''){
+    setIsSubmit(!isSubmit)
     }
-
+}
     return (
         <>
-         <h1>Education</h1>
+         <h1>Experience</h1>
         { ! isSubmit? (
          <form onSubmit={submit}>
-          <label htmlFor="" >School name</label>
-          <input type="text" value={school} onChange={e=>{setSchool(e.target.value)}}/> <br/>
-          <label htmlFor="">Title</label>
+          <label htmlFor="" >Company name</label>
+          <input type="text" value={company} onChange={e=>{setCompany(e.target.value)}}/> <br/>
+          <label htmlFor="">Position Title</label>
           <input type="text" value={title} onChange={e=>{setTitle(e.target.value)}}/> <br/>
           <label htmlFor="">Start Date</label>
           <input type="date" value={startDate} onChange={e=>{setStartDate(e.target.value)}}/> <br/>
@@ -37,17 +34,16 @@ function Education() {
          (
          <div>
          <ul>
-           <li><p>School name</p><p>{school}</p></li>
+           <li><p>School name</p><p>{company}</p></li>
            <li><p>Title</p><p>{title}</p></li>
            <li><p>Start Date</p><p>{startDate}</p></li>
            <li><p>End Date</p><p>{endDate}</p></li>
          </ul>
          <button onClick={submit}>Edit</button>
          </div>
-         )
-        }
+         )}
         </>
     )
 }
 
-export default Education;
+export default Experience;

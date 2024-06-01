@@ -2,6 +2,7 @@ import { useState } from 'react'
 import PersonalInfo from './assets/components/PersonalInfo'
 import Education from './assets/components/Education'
 import './App.css'
+import Experience from './assets/components/Experience'
 
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
   return (
     <>
      <PersonalInfo/>
-      <Education/>
+     <Education/>
+     <Experience/>
     </>
   )
 }
