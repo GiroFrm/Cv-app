@@ -11,11 +11,10 @@ function PersonalInfo() {
     
     function submit(event){
         event.preventDefault();
-        // if(name!=''&& email!=''&& number!=''){
-        // alert(name)// pass data to component
-        
-        // }
-        setisSubmited(true);
+        if(name!=''&& email!=''&& number!=''){
+        setisSubmited(!isSubmited);
+        }
+       
     }
 
     function handleName(e){
@@ -50,7 +49,7 @@ function PersonalInfo() {
         <li><p>Email</p><p>{email}</p></li>
         <li><p>Number</p><p>{number}</p></li>
         </ul>
-        <button>Edit</button>
+        <button onClick={submit}>Edit</button>
        </div>
         ) }
         </>
