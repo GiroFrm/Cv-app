@@ -3,23 +3,23 @@ import { useState } from "react";
 
 function PersonalInfo() {
  
-    const [name, setName] = useState('');
-    const [email, setEmail]= useState('');
-    const [number, setNumber]= useState('');
+    
+  const [inputs, setInputs]=useState({});
 
    const [isSubmited, setisSubmited]= useState(false);
     
     function submit(event){
         event.preventDefault();
-        if(name!=''&& email!=''&& number!=''){
+        if(inputs.nome!=''&& inputs.mail!=''&& inputs.number!=''){
         setisSubmited(!isSubmited);
         }
        
     }
 
-    function handleName(e){
-     setName(e.target.value)
-    
+    function handleChange(event){
+        const name = event.target.name;
+        const value= event.target.value;
+        setInputs(values=>({...values, [name]:value}))
     }
 
     return(
@@ -29,25 +29,26 @@ function PersonalInfo() {
         <form onSubmit={submit}>
           <label >Name</label>
           <input type="text"
-          value={name} 
-          onChange={handleName}/><br/>
-          <label htmlFor="email">email</label> 
-          <input type="email" id="email" 
-          value={email}
-          onChange={e=>setEmail(e.target.value)}
+          name="nome"
+          value={inputs.nome} 
+          onChange={handleChange}/><br/>
+          <label  >email</label> 
+          <input type="email" name="mail" 
+          value={inputs.mail}
+          onChange={handleChange}
           /> <br/>
-          <label htmlFor="number">Number</label>
-          <input type="tel" id="number" value={number}
-           onChange={e=>setNumber(e.target.value)}/> <br/>
-         <input type="submit"/>
+          <label >Number</label>
+          <input type="tel" name="number" value={inputs.number}
+           onChange={handleChange}/> <br/>
+          <input type="submit"/>
         </form> ) :
         
         (
          <div>
         <ul>
-        <li><b>Name</b><p>{name}</p></li>
-        <li><p>Email</p><p>{email}</p></li>
-        <li><p>Number</p><p>{number}</p></li>
+        <li><b>Name</b><p>{inputs.nome}</p></li>
+        <li><p>Email</p><p>{inputs.mail}</p></li>
+        <li><p>Number</p><p>{inputs.number}</p></li>
         </ul>
         <button onClick={submit}>Edit</button>
        </div>
