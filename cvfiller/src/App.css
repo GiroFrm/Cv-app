@@ -25,3 +25,24 @@ button{
   cursor:pointer;
 }
 
+form{
+  outline: 3px solid green;
+  max-width: 30%;
+  min-width: 300px;
+
+  display: grid;
+ 
+}
+
+form input{
+  grid-column: 2/3;
+}
+
+form label {
+  grid-column: 1/2;
+
+}
+form input[type="submit"]{
+  margin-top: 0.5rem;
+}
+
